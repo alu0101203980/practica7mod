@@ -1,63 +1,38 @@
 import 'mocha';
 import { expect } from 'chai';
-import { Racional } from '../../p7mod/src/racional';
+import { RandomNumber } from '../src/racional';
+import { SetRandomNumber } from '../src/set';
 
 describe('Modificacion function test', () => {
-    describe('Racional function test', () => {
-        const n1 = new Racional(2,3);
-        const n2 = new Racional(1,2);
-        const n3 = new Racional(2,4);
+    describe('RandomNumber function test', () => {
+        const randomNumber = RandomNumber.getRandomNumber();
         
-    
         it("Se espera que se pueda instanciar un numero racional", () => {
-            expect(n1).not.to.be.equal(null);
+            expect(randomNumber).not.to.be.equal(null);
         });
-        describe('Racional getters test', () => {
-            it("Se espera poder acceder al numerador", () => {
-                expect(n1.getNumerador()).to.be.eql(2);
-            });
-            it("Se espera poder acceder al denominador", () => {
-                expect(n1.getDenominador()).to.be.eql(3);
-            });
+        it("Se espera que se pueda obtener un numero flotante aleatorio entre 0 y 1", () => {
+            expect(randomNumber.getFloatNumber_0_1()).to.be.below(1);
+            expect(randomNumber.getFloatNumber_0_1()).not.to.be.below(0);
         });
-        describe('Racional setters test', () => {
-            it("Se espera poder establecer el numerador", () => {
-                n1.setNumerador(2)
-                expect(n1.getNumerador()).to.be.eql(2);
-            });
-            it("Se espera poder establecer el denominador", () => {
-                n1.setDenominador(3)
-                expect(n1.getDenominador()).to.be.eql(3);
-            });
+        it("Se espera que se pueda obtener un numero flotante aleatorio entre 1 y 8", () => {
+            expect(randomNumber.getFloatNumber_N_M(1,8)).to.be.below(8);
+            expect(randomNumber.getFloatNumber_N_M(1,8)).not.to.be.below(1);
         });
-        describe('Racional methods test', () => {
-            it("Se espera poder simplificar el número racional", () => {
-                expect(n3.simplifica(n3).getNumerador()).to.be.eql(1);
-                expect(n3.invertir(n3).getDenominador()).to.be.eql(2);
-            });
-            it("Se espera poder invertir el número racional", () => {
-                expect(n1.invertir(n1).getNumerador()).to.be.eql(3);
-                expect(n1.invertir(n1).getDenominador()).to.be.eql(2);
-            });
-            it("Se espera poder sumar dos números racionales", () => {
-                expect(n1.sumar(n1,n2).getNumerador()).to.be.eql(3);
-                expect(n1.sumar(n1,n2).getDenominador()).to.be.eql(5);
-            });
-            it("Se espera poder restar dos números racionales", () => {
-                expect(n1.restar(n1,n2).getNumerador()).to.be.eql(1);
-                expect(n1.restar(n1,n2).getDenominador()).to.be.eql(1);
-            });
-            it("Se espera poder multiplicar dos números racionales", () => {
-                expect(n1.multiplicar(n1,n2).getNumerador()).to.be.eql(2);
-                expect(n1.multiplicar(n1,n2).getDenominador()).to.be.eql(6);
-            });
-            it("Se espera poder dividir dos números racionales", () => {
-                expect(n1.dividir(n1,n2).getNumerador()).to.be.eql(4);
-                expect(n1.dividir(n1,n2).getDenominador()).to.be.eql(3);
-            });
-            it('Se espera poder mostrar el número racional', () => {
-                expect(n1.mostrarRacional()).to.be.eql('2/3');
-            });
+        it("Se espera que se pueda obtener un numero entero aleatorio entre 2 y 5", () => {
+            expect(randomNumber.getFloatNumber_N_M(2,5)).to.be.below(5);
+            expect(randomNumber.getFloatNumber_N_M(2,5)).not.to.be.below(2);
+        });
+
+        const set = new SetRandomNumber([]);
+
+        it("Se espera que se pueda instanciar un set de numeros", () => {
+            expect(set).not.to.be.equal(null);
+        });
+        it("Se espera que se pueda establecer un set de numeros", () => {
+            expect(set.setConjunto()).not.to.be.equal(null);
+        });
+        it("Se espera que se pueda obtener un set de numeros", () => {
+            expect(set.getConjunto()).not.to.be.equal(null);
         });
     });
 });

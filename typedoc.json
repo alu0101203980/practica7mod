@@ -1,6 +1,7 @@
 {
     "entryPoints": [
-        "./src/racional.ts"
+        "./src/racional.ts",
+        "./src/set.ts"
     ],
     "out": "./docs"
 }
