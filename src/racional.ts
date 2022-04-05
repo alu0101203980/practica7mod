@@ -42,7 +42,7 @@ export class RandomNumber {
 /**
  * Genera número aletaorio entero entre el min y el max
  * @param min Límite inferior
- * @param max Límite superior
+ * @param max Límite superior.
  * @returns Número entero generado entre min y max
  */
     getIntegerNumber_N_M(min: number, max: number) {
