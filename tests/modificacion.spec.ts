@@ -15,7 +15,7 @@ describe('Modificacion function test', () => {
             expect(randomNumber.getFloatNumber_0_1()).not.to.be.below(0);
         });
         it("Se espera que se pueda obtener un numero flotante aleatorio entre 1 y 8", () => {
-            expect(randomNumber.getFloatNumber_N_M(1,8)).to.be.below(8);
+            expect(randomNumber.getFloatNumber_N_M(1,8)).to.be.below(9);
             expect(randomNumber.getFloatNumber_N_M(1,8)).not.to.be.below(1);
         });
         it("Se espera que se pueda obtener un numero entero aleatorio entre 2 y 5", () => {
