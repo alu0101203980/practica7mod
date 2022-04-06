@@ -1,38 +1,39 @@
 import 'mocha';
 import { expect } from 'chai';
-import { RandomNumber } from '../src/racional';
-import { SetRandomNumber } from '../src/set';
+import { Revista } from '../src/revista';
+import { Suscriptor } from '../src/suscriptor';
+
 
 describe('Modificacion function test', () => {
     describe('RandomNumber function test', () => {
-        const randomNumber = RandomNumber.getRandomNumber();
-        
-        it("Se espera que se pueda instanciar un numero racional", () => {
-            expect(randomNumber).not.to.be.equal(null);
+        const marca1 = new Revista('Marca1','20 de febrero',10);
+        const Diego = new Suscriptor('Diego');
+        const Hugo = new Suscriptor('Hugo');
+
+        marca1.subscribe(Diego);
+
+        it("Se espera que se pueda instanciar un numero de una revista", () => {
+            expect(marca1).not.to.be.equal(null);
         });
-        it("Se espera que se pueda obtener un numero flotante aleatorio entre 0 y 1", () => {
-            expect(randomNumber.getFloatNumber_0_1()).to.be.below(1);
-            expect(randomNumber.getFloatNumber_0_1()).not.to.be.below(0);
-        });
-        it("Se espera que se pueda obtener un numero flotante aleatorio entre 1 y 8", () => {
-            expect(randomNumber.getFloatNumber_N_M(1,8)).to.be.below(9);
-            expect(randomNumber.getFloatNumber_N_M(1,8)).not.to.be.below(1);
-        });
-        it("Se espera que se pueda obtener un numero entero aleatorio entre 2 y 5", () => {
-            expect(randomNumber.getFloatNumber_N_M(2,5)).to.be.below(6);
-            expect(randomNumber.getFloatNumber_N_M(2,5)).not.to.be.below(2);
+        it("Se espera se pueda instanciar un suscriptor", () => {
+            expect(Diego).not.to.be.equal(null);
         });
 
-        const set = new SetRandomNumber([]);
+        it("Se espera ver la notificacion de suscripcion", () => {
+            expect(marca1.subscribe(Diego)).to.be.eql("Diego subscribed to Marca1 numbers.");
+        });
 
-        it("Se espera que se pueda instanciar un set de numeros", () => {
-            expect(set).not.to.be.equal(null);
+        it("Se espera ver la notificacion de suscripcion", () => {
+            expect(marca1.subscribe(Hugo)).to.be.eql("Hugo subscribed to Marca1 numbers.");
         });
-        it("Se espera que se pueda establecer un set de numeros", () => {
-            expect(set.setConjunto()).not.to.be.equal(null);
+        it("Se espera ver la publicación de un nuevo número", () => {
+            expect(marca1.nuevoNumero({title: '1-Fútbol',})).to.be.eql("Marca1 published a new article: '1-Fútbol'");
         });
-        it("Se espera que se pueda obtener un set de numeros", () => {
-            expect(set.getConjunto()).not.to.be.equal(null);
+        it("Se espera ver la notificacion de una desuscripcion", () => {
+            expect(marca1.unsubscribe(Hugo)).to.be.eql("Hugo unsubscribed from Marca1 articles.");
+        });
+        it("Se espera ver la publicación de un nuevo número", () => {
+            expect(marca1.nuevoNumero({title: '2-Baloncesto',})).to.be.eql("Marca1 published a new article: '2-Baloncesto'");
         });
     });
 });

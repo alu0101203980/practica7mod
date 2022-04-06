@@ -5,7 +5,7 @@
   "scripts": {
     "test": "mocha",
     "coverage": "nyc npm test && nyc report --reporter=lcov",
-    "start": "tsc-watch --onSuccess \"node dist/racional.js\"",
+    "start": "tsc-watch --onSuccess \"node dist/revista.js\"",
     "doc": "typedoc"
   },
   "keywords": [],
