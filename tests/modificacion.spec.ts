@@ -35,5 +35,8 @@ describe('Modificacion function test', () => {
         it("Se espera ver la publicación de un nuevo número", () => {
             expect(marca1.nuevoNumero({title: '2-Baloncesto',})).to.be.eql("Marca1 published a new article: '2-Baloncesto'");
         });
+        it("Se espera ver la publicación de un nuevo número1", () => {
+            expect(marca1.nuevoNumero({title: '2-Baloncesto',})).to.be.eql("Marca1 published a new article: '2-Baloncesto'");
+        });
     });
 });
